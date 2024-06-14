@@ -40,56 +40,59 @@ class _HomeState extends State<Home> {
                     ),
                     const SizedBox(height: 8.0),
                     ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.lightBlue.shade600,
-                            backgroundColor: Colors.grey.shade50,
-                            side: BorderSide(
-                                width: 2.0, color: Colors.lightBlue.shade200)),
-                        onPressed: () {
-                          if (myController.text.isNotEmpty) {
-                            data.addItem(myController.text);
-                          } else {
-                            newMethod(context);
-                          }
-                          myController.text = '';
-                        },
-                        child: const Text(
-                          'Add Item',
-                          style: TextStyle(fontSize: 18),
-                        )),
+                      style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.lightBlue.shade600,
+                          backgroundColor: Colors.grey.shade50,
+                          side: BorderSide(
+                              width: 2.0, color: Colors.lightBlue.shade200)),
+                      onPressed: () {
+                        if (myController.text.isNotEmpty) {
+                          data.addItem(myController.text);
+                        } else {
+                          newMethod(context);
+                        }
+                        myController.text = '';
+                      },
+                      child: const Text(
+                        'Add Item',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
                     const SizedBox(height: 12.0),
                     const Center(
-                        child: Text(
-                      'ITEMS LIST',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    )),
+                      child: Text(
+                        'ITEMS LIST',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ],
                 ),
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: data.items.length,
-                    itemBuilder: (context, index) {
-                      final item = data.items[index];
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 3.0),
-                        child: Card(
-                            elevation: 5.0,
-                            child: ListTile(
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 16.0),
-                              leading:
-                                  CircleAvatar(child: Text('${index + 1}')),
-                              title: Center(child: Text(item)),
-                              trailing: IconButton(
-                                  onPressed: () {
-                                    data.removeItem(index);
-                                  },
-                                  icon: const Icon(CupertinoIcons.delete)),
-                            )),
-                      );
-                    }),
+                  itemCount: data.items.length,
+                  itemBuilder: (context, index) {
+                    final item = data.items[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 3.0),
+                      child: Card(
+                        elevation: 5.0,
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 16.0),
+                          leading: CircleAvatar(child: Text('${index + 1}')),
+                          title: Center(child: Text(item)),
+                          trailing: IconButton(
+                              onPressed: () {
+                                data.removeItem(index);
+                              },
+                              icon: const Icon(CupertinoIcons.delete)),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               )
             ],
           ),
