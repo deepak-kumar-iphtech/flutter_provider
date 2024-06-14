@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/mainscreens/item_provider.dart';
 import 'package:flutter_application/mainscreens/list_view.dart';
@@ -15,17 +14,14 @@ class _HomeState extends State<Home> {
   TextEditingController myController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    print('build');
-    return Consumer<ItemProvider>(
-      builder: (context, data, child) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text(
-            'Provider',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-        body: Padding(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Provider',
+            style: TextStyle(fontWeight: FontWeight.bold)),
+      ),
+      body: Consumer<ItemProvider>(
+        builder: (context, data, child) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 16.0),
           child: Column(
             children: [
@@ -34,11 +30,10 @@ class _HomeState extends State<Home> {
                 child: ListView(
                   children: [
                     TextField(
-                      controller: myController,
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Enter Item'),
-                    ),
+                        controller: myController,
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Enter Item')),
                     const SizedBox(height: 8.0),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -50,7 +45,7 @@ class _HomeState extends State<Home> {
                         if (myController.text.isNotEmpty) {
                           data.addItem(myController.text);
                         } else {
-                          newMethod(context);
+                          alertDilogBox(context);
                         }
                         myController.text = '';
                       },
@@ -78,7 +73,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Future<dynamic> newMethod(BuildContext context) {
+  Future<dynamic> alertDilogBox(BuildContext context) {
     return showDialog(
       context: context,
       builder: (context) {
