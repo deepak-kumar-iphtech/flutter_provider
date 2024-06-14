@@ -1,12 +1,14 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 
 class ItemProvider extends ChangeNotifier {
   List<String> items = [];
-  void addInList() {
-    String item = items.last;
+  void addItem(String item) {
     items.add(item);
+    notifyListeners();
+  }
+
+  void removeItem(int index) {
+    items.removeAt(index);
     notifyListeners();
   }
 }
