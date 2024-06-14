@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/mainscreens/item_provider.dart';
+import 'package:flutter_application/mainscreens/list_view.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -69,31 +70,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: data.items.length,
-                  itemBuilder: (context, index) {
-                    final item = data.items[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 3.0),
-                      child: Card(
-                        elevation: 5.0,
-                        child: ListTile(
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 16.0),
-                          leading: CircleAvatar(child: Text('${index + 1}')),
-                          title: Center(child: Text(item)),
-                          trailing: IconButton(
-                              onPressed: () {
-                                data.removeItem(index);
-                              },
-                              icon: const Icon(CupertinoIcons.delete)),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              )
+              const ListViewItems()
             ],
           ),
         ),
@@ -103,20 +80,20 @@ class _HomeState extends State<Home> {
 
   Future<dynamic> newMethod(BuildContext context) {
     return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('No Item...!'),
-            //icon: Icon(CupertinoIcons.clear_thick),
-            content: const Text('Try to add atleast one item.'),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('OK'))
-            ],
-          );
-        });
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('No Item...!'),
+          content: const Text('Try to add atleast one item.'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('OK')),
+          ],
+        );
+      },
+    );
   }
 }
