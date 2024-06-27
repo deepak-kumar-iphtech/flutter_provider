@@ -40,9 +40,10 @@ Our Flutter Provider app is built using the Flutter framework, ensuring a smooth
    flutter run
 The application should now be running on the connected emulator or physical device.
 
-📹 Video
-https://github.com/deepak-kumar-iphtech/flutter_provider/assets/171011499/4838e607-b8e6-4969-86b1-2fbd20b07020
+📷 Screenshots:
 
+![Screenshot 2024-06-27 at 6 00 58 PM](https://github.com/deepak-kumar-iphtech/flutter_provider/assets/171011499/a9ca0408-f514-44bc-8fc4-c79435e4f165)
+![Screenshot 2024-06-27 at 6 02 11 PM](https://github.com/deepak-kumar-iphtech/flutter_provider/assets/171011499/ad7cfe4f-cab6-4586-b231-d1fb4dd851f1)
 
 
 
